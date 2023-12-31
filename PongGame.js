@@ -1,6 +1,7 @@
 import Ball from "./Ball.js";
 import Paddle from "./Paddle.js";
 
+const GAIN = 0.025;
 export default class PongGame {
   constructor(numPlayers) {
     this.ball = new Ball(document.getElementById("ball"));
@@ -13,12 +14,23 @@ export default class PongGame {
     this.botPaddles = [];
     this.lastTime = null;
     this.initEventListeners();
+    this.score = 0;
+    this.scoreElement = document.createElement("div");
+    this.scoreElement.className = "score-display";
+
+    document.querySelector(".score-container").appendChild(this.scoreElement);
+
     window.requestAnimationFrame(this.update.bind(this));
 
     for (let i = numPlayers; i < 4; i++) {
       const arr = Object.keys(this.paddles);
       this.botPaddles.push(this.paddles[arr[i]]);
     }
+  }
+
+  updateScore(newScore) {
+    this.score = newScore;
+    this.scoreElement.textContent = this.score.toFixed(2);
   }
 
   initEventListeners() {
@@ -80,6 +92,7 @@ export default class PongGame {
   update(time) {
     if (this.lastTime != null) {
       const delta = time - this.lastTime;
+      this.updateScore(this.score + GAIN); // Increment score for demonstration
 
       // Update the ball position
       this.ball.update(
@@ -119,7 +132,17 @@ export default class PongGame {
   }
 
   handleLose() {
-    // Handle the lose condition, like resetting the ball
+    const rect = this.ball.rect();
+    // if (rect.right >= window.innerWidth) {
+    //   playerScoreElem.textContent = parseInt(playerScoreElem.textContent) + 1;
+    // } else {
+    //   computerScoreElem.textContent =
+    //     parseInt(computerScoreElem.textContent) + 1;
+    // }
     this.ball.reset();
+    this.botPaddles.forEach((paddle) => {
+      paddle.reset();
+    });
+    this.score = 0;
   }
 }
