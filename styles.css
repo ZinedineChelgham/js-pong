@@ -13,6 +13,10 @@
 
 body {
   margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
   background-color: var(--background-color);
   overflow: hidden;
 }
@@ -23,8 +27,9 @@ body {
   background-color: var(--foreground-color);
   top: calc(var(--position) * 1vh);
   transform: translateY(-50%);
-  width: 1vh;
-  height: 10vh;
+  width: 2vh;
+  height: 20vh;
+  border-radius: 1vh;
 }
 
 .paddle-side {
@@ -33,8 +38,9 @@ body {
   background-color: var(--foreground-color);
   left: calc(var(--paddle-x) * 1vw);
   transform: rotate(90deg);
-  width: 1vh;
-  height: 30vh;
+  width: 2vh;
+  height: 20vh;
+  border-radius: 1vh;
 }
 
 .paddle.left {
@@ -57,36 +63,46 @@ body {
 
 /* Your existing CSS styles */
 
-.button-controls {
-  position: absolute;
-}
 
 #left-btn {
   position: absolute;
   left: 2vw;
   top: 50%;
-  transform: translateX(-50%) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(90deg);
 }
 
 #right-btn {
   position: absolute;
-  right: -3vw;
+  right: -5vw;
   top: 50%;
-  transform: translateX(-50%) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(90deg);
 }
 
 #top-btn {
   position: absolute;
   left: 50%;
-  top: 3vh;
+  top: 4vh;
   transform: translateX(-50%) translateY(-50%);
 }
 
 #bottom-btn {
   position: absolute;
   left: 50%;
-  bottom: 1vh;
+  bottom: 2vh;
   transform: translateX(-50%) translateY(-50%);
+}
+
+button {
+  background-color: var(--foreground-color);
+  border: none;
+  font-size: 2vh;
+  padding: 1vh 2vh;
+  border-radius: 1vh;
+  margin: 1vh;
+  color: var(--background-color);
+  font-weight: bold;
+  cursor: pointer;
+
 }
 
 
