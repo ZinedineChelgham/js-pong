@@ -30,7 +30,7 @@ export default class PongGame {
 
   updateScore(newScore) {
     this.score = newScore;
-    this.scoreElement.textContent = this.score.toFixed(2);
+    this.scoreElement.textContent = "Score\n" + this.score.toFixed(2);
   }
 
   initEventListeners() {
