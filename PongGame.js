@@ -132,7 +132,7 @@ export default class PongGame {
   }
 
   handleLose() {
-    const rect = this.ball.rect();
+    //const rect = this.ball.rect();
     // if (rect.right >= window.innerWidth) {
     //   playerScoreElem.textContent = parseInt(playerScoreElem.textContent) + 1;
     // } else {
