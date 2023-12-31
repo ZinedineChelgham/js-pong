@@ -1,4 +1,6 @@
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -17,7 +19,6 @@ body {
 
 .paddle {
   --position: 50;
-
   position: absolute;
   background-color: var(--foreground-color);
   top: calc(var(--position) * 1vh);
@@ -26,13 +27,68 @@ body {
   height: 10vh;
 }
 
+.paddle-side {
+  --paddle-x: 50;
+  position: absolute;
+  background-color: var(--foreground-color);
+  left: calc(var(--paddle-x) * 1vw);
+  transform: rotate(90deg);
+  width: 1vh;
+  height: 30vh;
+}
+
 .paddle.left {
-  left: 1vw;
+  left: 5vw;
 }
 
 .paddle.right {
-  right: 1vw;
+  right: 5vw;
+
 }
+
+.paddle-side.top {
+  top: 5vh;
+
+}
+
+.paddle-side.bottom {
+  bottom: 5vh;
+}
+
+/* Your existing CSS styles */
+
+.button-controls {
+  position: absolute;
+}
+
+#left-btn {
+  position: absolute;
+  left: 2vw;
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+#right-btn {
+  position: absolute;
+  right: -3vw;
+  top: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+
+#top-btn {
+  position: absolute;
+  left: 50%;
+  top: 3vh;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#bottom-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 1vh;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 
 .ball {
   --x: 50;
@@ -56,7 +112,7 @@ body {
   color: var(--foreground-color);
 }
 
-.score > * {
+.score>* {
   flex-grow: 1;
   flex-basis: 0;
   padding: 0 2vh;
@@ -64,7 +120,7 @@ body {
   opacity: .5;
 }
 
-.score > :first-child {
+.score> :first-child {
   text-align: right;
   border-right: .5vh solid var(--foreground-color);
 }
